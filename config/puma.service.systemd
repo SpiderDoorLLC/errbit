@@ -1,0 +1,15 @@
+[Unit]
+Description=Puma HTTP Server
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+
+Environment=PUMA_DEBUG=1
+WorkingDirectory=/home/ubuntu/errbit
+ExecStart=/home/ubuntu/.rvm/wrappers/ruby-2.6.0/bundle exec puma -C /home/ubuntu/errbit/config/puma.production.rb
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
